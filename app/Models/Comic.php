@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comic extends Model
 {
     use HasFactory;
+
+    //Mass Assignment
+    protected $guarded= [];
 }

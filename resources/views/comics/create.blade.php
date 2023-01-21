@@ -2,9 +2,9 @@
 
 @section('page-content')
     <div class="container">
-        <h1>Crea un nuovo fumetto</h1>
-        <form action="{{ route('comics.store') }}" method="POST">
-            @csrf
+        <h1>Crea un nuovo fumetto</h1> 
+        <form action="{{ route('comics.store') }}" method="POST"> {{-- questa route è il posto in cui spedisco i dati inseriti nel form. Il metodo store si aspetta la richiesta in POST--}}
+            @csrf {{-- grazie a questo token solo chi ha il nostro applicativo può fare il submit --}}
             <div class="mb-3">
                 <label for="title" class="form-label">Title*</label>
                 <input type="text" name="title" id="title" class="form-control" maxlenght="50" required>

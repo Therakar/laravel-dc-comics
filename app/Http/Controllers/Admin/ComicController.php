@@ -44,12 +44,13 @@ class ComicController extends Controller
         $new_comic = new Comic();
 
         //compilo l'oggetto (o meglio le sue proprietà) | posso copiare questa parte dal seeder ma al posto di $comic metto $data 
-        $new_comic ->title = $data['title'];
-        $new_comic ->description = $data['description'];
-        $new_comic ->price = $data['price'];
-        $new_comic ->series = $data['series'];
-        $new_comic ->sale_date = $data['sale_date'];
-        $new_comic ->type = $data['type'];
+        // $new_comic ->title = $data['title'];
+        // $new_comic ->description = $data['description'];
+        // $new_comic ->price = $data['price'];
+        // $new_comic ->series = $data['series'];
+        // $new_comic ->sale_date = $data['sale_date'];
+        // $new_comic ->type = $data['type'];
+        $new_comic->fill($data); //mass assignment
 
         //salvo (creo a db la riga)
         $new_comic ->save(); //a questo punto l'autoincrement del db assegna l'id al nuovo elemento
