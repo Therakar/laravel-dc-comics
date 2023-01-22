@@ -82,9 +82,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -94,9 +94,16 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        //prendo i dati
+        $data = $request->all();
+
+        //faccio l'update con il mass assignment
+        $comic->update($data);
+
+        //faccio un redirect a comics.show della risorsa aggiornata
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -105,8 +112,12 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        //cancello l'elemento
+        $comic->delete();
+
+        //faccio un redirect a comics.index
+        return redirect()->route('comics.index');
     }
 }

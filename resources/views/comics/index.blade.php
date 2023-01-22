@@ -26,7 +26,18 @@
                     <td>{{$comic->series}}</td>
                     <td>{{$comic->sale_date}}</td>
                     <td>{{$comic->type}}</td>
-                    <td><a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">Info</a></td>
+                    <td class="d-flex">
+                      
+                      <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary me-1">Info</a>{{-- tasto info --}}
+                      <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary me-1">Edit</a>{{-- tasto edit --}}
+
+                      {{-- form delete --}}
+                      <form action="{{route('comics.destroy',  $comic->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="sumit" class="btn btn-danger">Delete</button>
+                      </form>
+                    </td>
                 </tr>    
               @endforeach
             </tbody>
