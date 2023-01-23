@@ -15,6 +15,10 @@
                 <input type="text" name="series" id="series" class="form-control" value="{{$comic->series}}" maxlenght="50" required>
             </div>
             <div class="mb-3">
+                <label for="thumb" class="form-label">Thumb</label>
+                <input type="text" name="thumb" id="thumb" class="form-control" value="{{$comic->thumb}}" required>
+            </div>
+            <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale Date*</label>
                 <input type="date" name="sale_date" id="sale_date" class="form-control" value="{{$comic->sale_date}}" required>
             </div>

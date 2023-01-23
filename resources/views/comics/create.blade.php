@@ -14,6 +14,10 @@
                 <input type="text" name="series" id="series" class="form-control" maxlenght="50" required>
             </div>
             <div class="mb-3">
+                <label for="thumb" class="form-label">Thumb</label>
+                <input type="text" name="thumb" id="thumb" class="form-control">
+            </div>
+            <div class="mb-3">
                 <label for="sale_date" class="form-label">Sale Date*</label>
                 <input type="date" name="sale_date" id="sale_date" class="form-control" required>
             </div>
@@ -38,6 +42,5 @@
             <button type="reset" class="btn btn-warning">Reset</button>
             <a href="{{route('comics.index')}}" class="btn btn-primary">Torna alla lista comics</a>
         </form>
-        
     </div>
 @endsection

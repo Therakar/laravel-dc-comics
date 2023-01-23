@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
+        $this->call([ //qui dentro metto tutti i seeder in modo da poterli avviare anche tutti insieme con un solo comando "php artisan db:seed"
             ComicsTableSeeder::class,
         ]);
     }

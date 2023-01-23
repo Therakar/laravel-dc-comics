@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 class ComicController extends Controller
 {
     /**
@@ -37,6 +37,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        //faccio la validazione dei dati
+        $request->validate([
+            'title' => 'required | string | unique: comics | max:50',
+            'description' => 'text',
+            'thumb' => 'nullable | url',
+            'price' => 'required | numeric | between: 0.50,  9999.99',
+            'series' => 'required | string | max: 50',
+            'sale_date' => 'required | date',
+            'type' => [
+                        'required',
+                        Rule::in(['comic-book','graphic-novel'])
+            ],                    
+        ]);
+
         //prendo tutti i dati
         $data = $request->all();
 
@@ -50,6 +64,7 @@ class ComicController extends Controller
         // $new_comic ->series = $data['series'];
         // $new_comic ->sale_date = $data['sale_date'];
         // $new_comic ->type = $data['type'];
+
         $new_comic->fill($data); //mass assignment
 
         //salvo (creo a db la riga)
