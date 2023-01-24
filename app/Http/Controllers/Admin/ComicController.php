@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 class ComicController extends Controller
 {
     /**
@@ -37,6 +37,19 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        //validazione
+        $request->validate([
+            'title' => 'required | string | unique: comics | max:50',
+            'description' => 'text',
+            'thumb' => 'nullable | url',
+            'price' => 'required | numeric | between: 0.50,  9999.99',
+            'series' => 'required | string | max: 50',
+            'sale_date' => 'required | date',
+            'type' => [
+                        'required',
+                        Rule::in(['comic-book','graphic-novel'])
+            ],                    
+        ]);
         //prendo tutti i dati
         $data = $request->all();
 
@@ -56,7 +69,7 @@ class ComicController extends Controller
         $new_comic ->save(); //a questo punto l'autoincrement del db assegna l'id al nuovo elemento
 
         //dove reindirizzo l'utente una volta che crea l'elemento? --> magari all'index o allo show in modo che possa vedere l'elemento appena creato
-        
+         
         //redirect a show
         return redirect()->route('comics.show', $new_comic->id);
 

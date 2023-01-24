@@ -2,7 +2,16 @@
 
 @section('page-content')
     <div class="container">
-        <h1>Crea un nuovo fumetto</h1> 
+        <h1>Crea un nuovo fumetto</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div> 
+        @endif 
         <form action="{{ route('comics.store') }}" method="POST"> {{-- questa route è il posto in cui spedisco i dati inseriti nel form. Il metodo store si aspetta la richiesta in POST--}}
             @csrf {{-- grazie a questo token solo chi ha il nostro applicativo può fare il submit --}}
             <div class="mb-3">
