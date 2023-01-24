@@ -34,7 +34,11 @@
                       <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">Edit</a>{{-- tasto edit --}}
 
                       {{-- form delete --}}
+<<<<<<< HEAD
                       <form action="{{route('comics.destroy',  $comic->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Do you relly want to submit the form?');">
+=======
+                      <form action="{{route('comics.destroy',  $comic->id)}}" method="POST">
+>>>>>>> parent of 62951bb (richiesta di conferma)
                         @csrf
                         @method('DELETE')
                         <button type="sumit" class="btn btn-danger">Delete</button>
