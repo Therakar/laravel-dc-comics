@@ -9,8 +9,7 @@
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Thumb</th>
-                <th scope="col">Titolo</th>                
+                <th scope="col">Titolo</th>
                 <th scope="col">Price</th>
                 <th scope="col">Series</th>
                 <th scope="col">Sale Date</th>
@@ -22,22 +21,25 @@
               @foreach ($comics as $comic)
                 <tr>
                     <td>{{$comic->id}}</td>
-                    <td><img src="{{$comic->thumb}}" alt="{{$comic->title}}" width="50"></td>
                     <td>{{$comic->title}}</td>
-                    <td>{{$comic->price}}$</td>
+                    <td>{{$comic->price}}</td>
                     <td>{{$comic->series}}</td>
                     <td>{{$comic->sale_date}}</td>
                     <td>{{$comic->type}}</td>
-                    <td>
+                    <td class="d-flex">
                       
-                      <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary">Info</a>{{-- tasto info --}}
-                      <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-warning">Edit</a>{{-- tasto edit --}}
+                      <a href="{{ route('comics.show', $comic->id) }}" class="btn btn-primary me-1">Info</a>{{-- tasto info --}}
+                      <a href="{{ route('comics.edit', $comic->id) }}" class="btn btn-primary me-1">Edit</a>{{-- tasto edit --}}
 
                       {{-- form delete --}}
+<<<<<<< HEAD
 
                       <form action="{{route('comics.destroy',  $comic->id)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Do you relly want to submit the form?');">
                       <form action="{{route('comics.destroy',  $comic->id)}}" method="POST">
 
+=======
+                      <form action="{{route('comics.destroy',  $comic->id)}}" method="POST" onsubmit="return confirm('Do you relly want to submit the form?');">
+>>>>>>> parent of 5834026 (validazione)
                         @csrf
                         @method('DELETE')
                         <button type="sumit" class="btn btn-danger">Delete</button>
@@ -48,6 +50,6 @@
             </tbody>
           </table>
 
-          <a href="{{ route('comics.create') }}" class="btn btn-secondary">Crea un nuovo fumetto</a>
+          <a href="{{ route('comics.create') }}" class="btn btn-primary">Crea un nuovo fumetto</a>
     </div>
 @endsection

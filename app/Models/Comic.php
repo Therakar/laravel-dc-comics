@@ -10,5 +10,5 @@ class Comic extends Model
     use HasFactory;
 
     //Mass Assignment
-    protected $guarded=[];
+    protected $guarded= [];
 }
